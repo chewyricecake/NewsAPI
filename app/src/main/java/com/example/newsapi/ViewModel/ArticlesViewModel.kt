@@ -17,9 +17,9 @@ class ArticlesViewModel: ViewModel() {
     val articlesRepository: ArticlesRepository = ArticlesRepository()
     val articles : MutableLiveData<Events<News>> = MutableLiveData()
 
-    fun get(topic: String){
+    fun get(topic: String, sort:String){
         viewModelScope.launch {
-            articlesRepository.getArticlesFromServer(topic).catch {
+            articlesRepository.getArticlesFromServer(topic,sort).catch {
                 Log.e("VM","get: ${it.localizedMessage}/n")
                 articles.postValue(Events.Error(msg = it.localizedMessage))
             }.collect{

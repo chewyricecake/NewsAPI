@@ -10,7 +10,8 @@ import com.example.newsapi.Models.News
 
 class ArticlesRepository {
 
-    fun getArticlesFromServer(topic: String) : Flow<News> = flow{
-        emit(RetrofitInstance.ApiInterface.getArticles(topic,API_KEY))
+    fun getArticlesFromServer(topic: String, sort: String) : Flow<News> = flow{
+        emit(RetrofitInstance.ApiInterface.getArticles(topic,sort,API_KEY))
+        println("ERROR: ${RetrofitInstance.ApiInterface.getArticles(topic,sort,API_KEY)}")
     }.flowOn(Dispatchers.Main)
 }

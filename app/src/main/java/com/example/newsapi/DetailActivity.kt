@@ -1,5 +1,6 @@
 package com.example.newsapi
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import coil.load
@@ -25,6 +26,10 @@ class DetailActivity : AppCompatActivity() {
             binding.urlToImage.load(article.urlToImage)
             binding.content.text = article.content
             binding.URL.text = article.url
+        }
+
+        binding.backArrow.setOnClickListener{
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
 
